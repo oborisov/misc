@@ -1,5 +1,6 @@
 library(brglm2)
 library(logistf)
+brglm_types <- c("AS_mixed", "AS_mean", "AS_median", "MPL_Jeffreys", "ML", "correction") 
 # print
 timestamp <- format(Sys.time(), format = "%Y%m%d_%H%M%S")
 fileConn_name <- paste0(timestamp, "_Firth_log.txt")
@@ -16,8 +17,10 @@ print(" ####### fisher.test ######## ")
 fisher.test(as.matrix(table(test_df)))
 print(" ####### Standard logistic regression ######## ")
 summary(glm(phenotype ~ SNP, data = test_df, family = binomial))
-print(" ####### brglmFit, type = AS_mean ######## ")
-summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = "AS_mean"))
+for (brglm_type in brglm_types) {
+  print(paste0(" ####### brglmFit, type = ", brglm_type, " ######## "))
+  print(summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = brglm_type)))
+}
 print(" ####### logistf ######## ")
 summary(logistf::logistf(phenotype ~ SNP, data=test_df))
 
@@ -29,8 +32,10 @@ print(" ####### Count table of the test data ######## ")
 table(test_df)
 print(" ####### Standard logistic regression ######## ")
 system.time(summary(glm(phenotype ~ SNP, data = test_df, family = binomial)))
-print(" ####### brglmFit, type = AS_mean ######## ")
-system.time(summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = "AS_mean")))
+for (brglm_type in brglm_types) {
+  print(" ####### brglmFit, type = AS_mean ######## ")
+  system.time(summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = brglm_type)))
+}
 print(" ####### logistf ######## ")
 system.time(summary(logistf::logistf(phenotype ~ SNP, data=test_df)))
 
