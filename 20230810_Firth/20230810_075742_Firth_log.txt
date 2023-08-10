@@ -11,13 +11,72 @@ phenotype      0      1
         1   8000   2000
 [1] " ####### fisher.test ######## "
    user  system elapsed 
-  0.300   0.020   0.319 
+  0.303   0.016   0.319 
+
+	Fisher's Exact Test for Count Data
+
+data:  as.matrix(table(test_df))
+p-value < 2.2e-16
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 5.386170 6.002769
+sample estimates:
+odds ratio 
+  5.687419 
+
 [1] " ####### Standard logistic regression ######## "
    user  system elapsed 
-  1.265   0.060   1.325 
+  1.435   0.044   1.480 
+
+Call:
+glm(formula = phenotype ~ SNP, family = binomial, data = test_df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.6681  -0.2933  -0.2933  -0.2933   2.5170  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -3.12457    0.01142 -273.52   <2e-16 ***
+SNP          1.73827    0.02749   63.24   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 79406  on 199999  degrees of freedom
+Residual deviance: 76348  on 199998  degrees of freedom
+AIC: 76352
+
+Number of Fisher Scoring iterations: 6
+
 [1] " ####### brglmFit, type = AS_mean ######## "
    user  system elapsed 
-  2.157   0.120   2.277 
+  1.856   0.040   1.897 
+
+Call:
+glm(formula = phenotype ~ SNP, family = binomial(logit), data = test_df, 
+    method = "brglmFit", type = "AS_mean")
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.6681  -0.2933  -0.2933  -0.2933   2.5170  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -3.12451    0.01142 -273.52   <2e-16 ***
+SNP          1.73840    0.02748   63.25   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 79406  on 199999  degrees of freedom
+Residual deviance: 76348  on 199998  degrees of freedom
+AIC:  76352
+
+Type of estimator: AS_mean (mean bias-reducing adjusted score equations)
+Number of Fisher Scoring iterations: 1
 [1] " ####### logistf ######## "
 logistf::logistf(formula = phenotype ~ SNP, data = test_df)
 
@@ -31,4 +90,4 @@ Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 
 Likelihood ratio test=3059.451 on 1 df, p=0, n=2e+05
 Wald test = 77891.42 on 1 df, p = 0   user  system elapsed 
-  3.793   0.065   3.857 
+  3.600   0.056   3.655 
