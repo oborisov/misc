@@ -6,76 +6,29 @@
 5         1   0
 6         1   0
          SNP
-phenotype    0    1
-        0 1820   80
-        1   80   20
-
-	Fisher's Exact Test for Count Data
-
-data:  as.matrix(table(test_df))
-p-value = 3.025e-08
-alternative hypothesis: true odds ratio is not equal to 1
-95 percent confidence interval:
- 3.133541 9.928939
-sample estimates:
-odds ratio 
-  5.677825 
-
-
-Call:
-glm(formula = phenotype ~ SNP, family = binomial, data = test_df)
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  -3.1246     0.1142 -27.352  < 2e-16 ***
-SNP           1.7383     0.2749   6.324 2.55e-10 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 794.06  on 1999  degrees of freedom
-Residual deviance: 763.48  on 1998  degrees of freedom
-AIC: 767.48
-
-Number of Fisher Scoring iterations: 6
-
-
-Call:
-glm(formula = phenotype ~ SNP, family = binomial(logit), data = test_df, 
-    method = "brglmFit", type = "AS_mean")
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--0.6736  -0.2942  -0.2942  -0.2942   2.5147  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  -3.1186     0.1139 -27.375  < 2e-16 ***
-SNP           1.7508     0.2735   6.402 1.54e-10 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 794.06  on 1999  degrees of freedom
-Residual deviance: 763.49  on 1998  degrees of freedom
-AIC:  767.49
-
-Type of estimator: AS_mean (mean bias-reducing adjusted score equations)
-Number of Fisher Scoring iterations: 3
+phenotype      0      1
+        0 182000   8000
+        1   8000   2000
+[1] " ####### fisher.test ######## "
+   user  system elapsed 
+  0.300   0.020   0.319 
+[1] " ####### Standard logistic regression ######## "
+   user  system elapsed 
+  1.265   0.060   1.325 
+[1] " ####### brglmFit, type = AS_mean ######## "
+   user  system elapsed 
+  2.157   0.120   2.277 
+[1] " ####### logistf ######## "
 logistf::logistf(formula = phenotype ~ SNP, data = test_df)
 
 Model fitted by Penalized ML
 Coefficients:
-                 coef  se(coef) lower 0.95 upper 0.95    Chisq           p
-(Intercept) -3.118609 0.1138929  -3.349743  -2.902696      Inf 0.00000e+00
-SNP          1.750777 0.2723499   1.196405   2.269064 31.63466 1.86079e-08
-            method
-(Intercept)      2
-SNP              2
+                 coef   se(coef) lower 0.95 upper 0.95 Chisq p method
+(Intercept) -3.124505 0.01142305  -3.146971  -3.102193   Inf 0      2
+SNP          1.738399 0.02748369   1.684343   1.792083   Inf 0      2
 
 Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 
-Likelihood ratio test=31.63466 on 1 df, p=1.86079e-08, n=2000
-Wald test = 780.3406 on 1 df, p = 0
+Likelihood ratio test=3059.451 on 1 df, p=0, n=2e+05
+Wald test = 77891.42 on 1 df, p = 0   user  system elapsed 
+  3.793   0.065   3.857 
