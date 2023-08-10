@@ -9,6 +9,7 @@ sink(fileConn)
 # code
 test_df <- data.frame(phenotype=c(rep(1, 80), rep(0, 1900), rep(1, 20)),
                       SNP=c(rep(0, 1900), rep(1, 100)))
+head(test_df)
 table(test_df)
 fisher.test(as.matrix(table(test_df)))
 summary(glm(phenotype ~ SNP, data = test_df, family = binomial))
