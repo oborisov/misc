@@ -221,13 +221,25 @@ phenotype      0      1
         1   8000   2000
 [1] " ####### Standard logistic regression ######## "
    user  system elapsed 
-  1.319   0.032   1.351 
+  1.305   0.039   1.344 
+[1] " ####### brglmFit, type = AS_mixed ######## "
+   user  system elapsed 
+  2.002   0.132   2.134 
 [1] " ####### brglmFit, type = AS_mean ######## "
-[1] " ####### brglmFit, type = AS_mean ######## "
-[1] " ####### brglmFit, type = AS_mean ######## "
-[1] " ####### brglmFit, type = AS_mean ######## "
-[1] " ####### brglmFit, type = AS_mean ######## "
-[1] " ####### brglmFit, type = AS_mean ######## "
+   user  system elapsed 
+  1.702   0.075   1.778 
+[1] " ####### brglmFit, type = AS_median ######## "
+   user  system elapsed 
+  1.802   0.080   1.881 
+[1] " ####### brglmFit, type = MPL_Jeffreys ######## "
+   user  system elapsed 
+  2.191   0.108   2.299 
+[1] " ####### brglmFit, type = ML ######## "
+   user  system elapsed 
+  1.783   0.080   1.863 
+[1] " ####### brglmFit, type = correction ######## "
+   user  system elapsed 
+  1.513   0.092   1.605 
 [1] " ####### logistf ######## "
 logistf::logistf(formula = phenotype ~ SNP, data = test_df)
 
@@ -241,4 +253,4 @@ Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 
 Likelihood ratio test=3059.451 on 1 df, p=0, n=2e+05
 Wald test = 77891.42 on 1 df, p = 0   user  system elapsed 
-  3.681   0.048   3.728 
+  3.849   0.047   3.895 

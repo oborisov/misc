@@ -33,8 +33,8 @@ table(test_df)
 print(" ####### Standard logistic regression ######## ")
 system.time(summary(glm(phenotype ~ SNP, data = test_df, family = binomial)))
 for (brglm_type in brglm_types) {
-  print(" ####### brglmFit, type = AS_mean ######## ")
-  system.time(summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = brglm_type)))
+  print(paste0(" ####### brglmFit, type = ", brglm_type, " ######## "))
+  print(system.time(summary(glm(phenotype ~ SNP, family = binomial(logit), data = test_df, method = "brglmFit", type = brglm_type))))
 }
 print(" ####### logistf ######## ")
 system.time(summary(logistf::logistf(phenotype ~ SNP, data=test_df)))
