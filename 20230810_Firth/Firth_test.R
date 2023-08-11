@@ -40,5 +40,39 @@ print(" ####### logistf ######## ")
 system.time(summary(logistf::logistf(phenotype ~ SNP, data=test_df)))
 
 
-# close connectoin
+# close connection
 sink(); close(fileConn)
+
+
+if (F) {
+
+  ##
+  fit <- glm(ICD ~ variant, input_df, family = binomial)
+  summary(fit)
+  fit2 <- glm(ICD ~ variant, family = binomial(logit),
+              data = input_df,
+              method = "glm.fit")
+  summary(fit2)
+  fit3 <- glm(ICD ~ variant, family = binomial(logit),
+              data = input_df,
+              method = "brglmFit", type = "AS_mixed")
+  summary(fit3)
+
+  data("lizards")
+  # Fit the model using maximum likelihood
+  lizardsML <- glm(cbind(grahami, opalinus) ~ height + diameter +
+                     light + time, family = binomial(logit), data = lizards,
+                   method = "glm.fit")
+  # Mean bias-reduced fit:
+  lizardsBR_mean <- glm(cbind(grahami, opalinus) ~ height + diameter +
+                          light + time, family = binomial(logit), data = lizards,
+                        method = "brglmFit")
+  # Median bias-reduced fit:
+  lizardsBR_median <- glm(cbind(grahami, opalinus) ~ height + diameter +
+                            light + time, family = binomial(logit), data = lizards,
+                          method = "brglmFit", type = "AS_median")
+
+
+  ##
+
+}
